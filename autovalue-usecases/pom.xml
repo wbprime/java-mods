@@ -41,10 +41,10 @@
         <junit-jupiter.version>5.4.2</junit-jupiter.version>
         <auto-value.version>1.6</auto-value.version>
         <google-truth.version>1.0</google-truth.version>
-        <javax_jsonp_api_version>1.1.4</javax_jsonp_api_version>
-        <javax_jsonb_api_version>1.0</javax_jsonb_api_version>
-        <javax_jsonp_johnzon_version>1.1.13</javax_jsonp_johnzon_version>
-        <javax_jsonb_johnzon_version>1.1.13</javax_jsonb_johnzon_version>
+        <jakarta_jsonp_api_version>1.1.6</jakarta_jsonp_api_version>
+        <jakarta_jsonb_api_version>1.0.2</jakarta_jsonb_api_version>
+        <jakarta_jsonp_glassfish_version>1.1.6</jakarta_jsonp_glassfish_version>
+        <jakarta_jsonb_yasson_version>1.0.5</jakarta_jsonb_yasson_version>
     </properties>
 
     <dependencies>
@@ -62,26 +62,26 @@
         </dependency>
 
         <dependency>
-            <groupId>javax.json</groupId>
-            <artifactId>javax.json-api</artifactId>
-            <version>${javax_jsonp_api_version}</version>
+            <groupId>jakarta.json</groupId>
+            <artifactId>jakarta.json-api</artifactId>
+            <version>${jakarta_jsonp_api_version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.json.bind</groupId>
-            <artifactId>javax.json.bind-api</artifactId>
-            <version>${javax_jsonb_api_version}</version>
+            <groupId>jakarta.json.bind</groupId>
+            <artifactId>jakarta.json.bind-api</artifactId>
+            <version>${jakarta_jsonb_api_version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.johnzon</groupId>
-            <artifactId>johnzon-core</artifactId>
-            <version>${javax_jsonp_johnzon_version}</version>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.json</artifactId>
+            <version>${jakarta_jsonp_glassfish_version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.johnzon</groupId>
-            <artifactId>johnzon-jsonb</artifactId>
-            <version>${javax_jsonb_johnzon_version}</version>
+            <groupId>org.eclipse</groupId>
+            <artifactId>yasson</artifactId>
+            <version>${jakarta_jsonb_yasson_version}</version>
             <scope>test</scope>
         </dependency>
 
