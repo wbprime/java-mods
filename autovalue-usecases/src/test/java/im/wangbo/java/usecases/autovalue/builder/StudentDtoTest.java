@@ -2,13 +2,10 @@ package im.wangbo.java.usecases.autovalue.builder;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-
 import java.time.OffsetDateTime;
 import java.util.Collections;
-import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbConfig;
-
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
