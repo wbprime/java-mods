@@ -1,4 +1,4 @@
-package im.wangbo.java.usecases.mapstruct.builder;
+package im.wangbo.java.usecases.mapstruct.autovalue;
 
 import org.junit.jupiter.api.Test;
 

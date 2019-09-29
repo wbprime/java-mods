@@ -1,8 +1,6 @@
-package im.wangbo.java.usecases.mapstruct.builder;
+package im.wangbo.java.usecases.mapstruct.autovalue;
 
-import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
-import org.mapstruct.MapperConfig;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 

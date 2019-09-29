@@ -1,9 +1,8 @@
-package im.wangbo.java.usecases.mapstruct.builder;
+package im.wangbo.java.usecases.mapstruct.autovalue;
 
 import com.google.auto.value.AutoValue;
 
 import java.time.OffsetDateTime;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
