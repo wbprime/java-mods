@@ -3,6 +3,7 @@ package im.wangbo.java.usecases.freebuilder.builder;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import org.inferred.freebuilder.FreeBuilder;
 
 /**
@@ -20,6 +21,8 @@ public abstract class StudentDto {
     public abstract OffsetDateTime getBirthday();
 
     public abstract String getAddr();
+
+    public abstract Optional<String> getTitle();
 
     public abstract List<String> getEmails();
 

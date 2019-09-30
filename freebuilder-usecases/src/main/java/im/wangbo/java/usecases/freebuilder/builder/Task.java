@@ -10,7 +10,7 @@ import org.inferred.freebuilder.FreeBuilder;
 @FreeBuilder
 interface Task {
 
-    Long id();
+    long id();
 
     String type();
 
