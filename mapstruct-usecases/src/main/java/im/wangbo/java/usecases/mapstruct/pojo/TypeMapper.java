@@ -1,4 +1,4 @@
-package im.wangbo.java.usecases.mapstruct.pojo.pojo1to1;
+package im.wangbo.java.usecases.mapstruct.pojo;
 
 import org.mapstruct.Mapper;
 
@@ -12,5 +12,4 @@ public interface TypeMapper {
     TargetDto convert(final SourceEntity from);
 
     SourceEntity convert(final TargetDto from);
-
 }

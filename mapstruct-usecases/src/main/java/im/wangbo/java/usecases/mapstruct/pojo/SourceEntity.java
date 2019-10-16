@@ -1,4 +1,4 @@
-package im.wangbo.java.usecases.mapstruct.pojo.pojo1to1;
+package im.wangbo.java.usecases.mapstruct.pojo;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -20,13 +20,13 @@ public class SourceEntity {
 
     private Long longProperty;
 
-    private String srtProperty;
+    private String strProperty;
 
     private OffsetDateTime dateTime;
 
     private List<BigDecimal> numbers;
 
-    private Map<String, TypeEnum> types;
+    private Map<String, String> types;
 
     public int getIntProperty() {
         return intProperty;
@@ -52,12 +52,12 @@ public class SourceEntity {
         this.longProperty = longProperty;
     }
 
-    public String getSrtProperty() {
-        return srtProperty;
+    public String getStrProperty() {
+        return strProperty;
     }
 
-    public void setSrtProperty(String srtProperty) {
-        this.srtProperty = srtProperty;
+    public void setStrProperty(String strProperty) {
+        this.strProperty = strProperty;
     }
 
     public OffsetDateTime getDateTime() {
@@ -76,11 +76,11 @@ public class SourceEntity {
         this.numbers = numbers;
     }
 
-    public Map<String, TypeEnum> getTypes() {
+    public Map<String, String> getTypes() {
         return types;
     }
 
-    public void setTypes(Map<String, TypeEnum> types) {
+    public void setTypes(Map<String, String> types) {
         this.types = types;
     }
 
@@ -96,7 +96,7 @@ public class SourceEntity {
         return intProperty == that.intProperty &&
             boolProperty == that.boolProperty &&
             Objects.equals(longProperty, that.longProperty) &&
-            Objects.equals(srtProperty, that.srtProperty) &&
+            Objects.equals(strProperty, that.strProperty) &&
             Objects.equals(dateTime, that.dateTime) &&
             Objects.equals(numbers, that.numbers) &&
             Objects.equals(types, that.types);
@@ -105,7 +105,7 @@ public class SourceEntity {
     @Override
     public int hashCode() {
         return Objects
-            .hash(intProperty, boolProperty, longProperty, srtProperty, dateTime, numbers, types);
+            .hash(intProperty, boolProperty, longProperty, strProperty, dateTime, numbers, types);
     }
 
     @Override
@@ -114,7 +114,7 @@ public class SourceEntity {
             .add("intProperty=" + intProperty)
             .add("boolProperty=" + boolProperty)
             .add("longProperty=" + longProperty)
-            .add("srtProperty='" + srtProperty + "'")
+            .add("srtProperty='" + strProperty + "'")
             .add("dateTime=" + dateTime)
             .add("numbers=" + numbers)
             .add("types=" + types)

@@ -1,4 +1,4 @@
-package im.wangbo.java.usecases.mapstruct.pojo.pojo1to1;
+package im.wangbo.java.usecases.mapstruct.pojo;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -13,19 +13,20 @@ import java.util.StringJoiner;
  * Created at 2019-10-16 by Elvis Wang
  */
 public class TargetDto {
+
     private int intProperty;
 
     private boolean boolProperty;
 
     private Long longProperty;
 
-    private String srtProperty;
+    private String strProperty;
 
     private OffsetDateTime dateTime;
 
-    private List<BigDecimal> numberList;
+    private List<BigDecimal> numbers;
 
-    private Map<String, TypeEnum> typeMap;
+    private Map<String, String> types;
 
     public int getIntProperty() {
         return intProperty;
@@ -51,12 +52,12 @@ public class TargetDto {
         this.longProperty = longProperty;
     }
 
-    public String getSrtProperty() {
-        return srtProperty;
+    public String getStrProperty() {
+        return strProperty;
     }
 
-    public void setSrtProperty(String srtProperty) {
-        this.srtProperty = srtProperty;
+    public void setStrProperty(String strProperty) {
+        this.strProperty = strProperty;
     }
 
     public OffsetDateTime getDateTime() {
@@ -67,20 +68,20 @@ public class TargetDto {
         this.dateTime = dateTime;
     }
 
-    public List<BigDecimal> getNumberList() {
-        return numberList;
+    public List<BigDecimal> getNumbers() {
+        return numbers;
     }
 
-    public void setNumberList(List<BigDecimal> numberList) {
-        this.numberList = numberList;
+    public void setNumbers(List<BigDecimal> numbers) {
+        this.numbers = numbers;
     }
 
-    public Map<String, TypeEnum> getTypeMap() {
-        return typeMap;
+    public Map<String, String> getTypes() {
+        return types;
     }
 
-    public void setTypeMap(Map<String, TypeEnum> typeMap) {
-        this.typeMap = typeMap;
+    public void setTypes(Map<String, String> types) {
+        this.types = types;
     }
 
     @Override
@@ -95,17 +96,16 @@ public class TargetDto {
         return intProperty == targetDto.intProperty &&
             boolProperty == targetDto.boolProperty &&
             Objects.equals(longProperty, targetDto.longProperty) &&
-            Objects.equals(srtProperty, targetDto.srtProperty) &&
+            Objects.equals(strProperty, targetDto.strProperty) &&
             Objects.equals(dateTime, targetDto.dateTime) &&
-            Objects.equals(numberList, targetDto.numberList) &&
-            Objects.equals(typeMap, targetDto.typeMap);
+            Objects.equals(numbers, targetDto.numbers) &&
+            Objects.equals(types, targetDto.types);
     }
 
     @Override
     public int hashCode() {
         return Objects
-            .hash(intProperty, boolProperty, longProperty, srtProperty, dateTime, numberList,
-                typeMap);
+            .hash(intProperty, boolProperty, longProperty, strProperty, dateTime, numbers, types);
     }
 
     @Override
@@ -114,10 +114,10 @@ public class TargetDto {
             .add("intProperty=" + intProperty)
             .add("boolProperty=" + boolProperty)
             .add("longProperty=" + longProperty)
-            .add("srtProperty='" + srtProperty + "'")
+            .add("srtProperty='" + strProperty + "'")
             .add("dateTime=" + dateTime)
-            .add("numberList=" + numberList)
-            .add("typeMap=" + typeMap)
+            .add("numbers=" + numbers)
+            .add("types=" + types)
             .toString();
     }
 }
