@@ -43,6 +43,7 @@
         <auto-value.version>1.6</auto-value.version>
         <freebuilder_version>2.4.1</freebuilder_version>
         <google-truth.version>1.0</google-truth.version>
+        <javax_inject_version>1</javax_inject_version>
     </properties>
 
     <dependencies>
@@ -50,6 +51,11 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>${javax_inject_version}</version>
         </dependency>
 
         <dependency>

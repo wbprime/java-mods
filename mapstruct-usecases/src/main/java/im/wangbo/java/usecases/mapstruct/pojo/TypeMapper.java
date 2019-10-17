@@ -8,11 +8,14 @@ import org.mapstruct.factory.Mappers;
  *
  * Created at 2019-10-16 by Elvis Wang
  */
-@Mapper
+@Mapper(componentModel = "jsr330")
 public interface TypeMapper {
 
     TypeMapper INSTANCE = Mappers.getMapper(TypeMapper.class);
-//    TypeMapper INSTANCE = new TypeMapperImpl();
+
+    static TypeMapper instance() {
+        return new TypeMapperImpl();
+    }
 
     TargetDto convert(final SourceEntity from);
 
