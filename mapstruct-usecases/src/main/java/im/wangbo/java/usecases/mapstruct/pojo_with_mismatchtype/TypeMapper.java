@@ -12,12 +12,12 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(unmappedSourcePolicy = ReportingPolicy.WARN, unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface TypeMapper {
 
-    @Mapping(source = "createdAt", target = "createTime")
     @Mapping(source = "intType", target = "enumType")
+    @Mapping(source = "createdAt", target = "createTime")
     TargetDto convert(final SourceEntity from);
 
-    @Mapping(source = "createTime", target = "createdAt")
     @Mapping(source = "enumType", target = "intType")
+    @Mapping(source = "createTime", target = "createdAt")
     SourceEntity convert(final TargetDto from);
 
     default int mapType(final TypeEnum v) {
