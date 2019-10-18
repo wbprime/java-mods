@@ -202,9 +202,30 @@
                 </plugin>
 
                 <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>versions-maven-plugin</artifactId>
-                    <version>${maven_plugin_versions_version}</version>
+                    <groupId>org.jooq</groupId>
+                    <artifactId>jooq-codegen-maven</artifactId>
+                    <version>${jooq_version}</version>
+
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.jooq</groupId>
+                            <artifactId>jooq-meta</artifactId>
+                            <version>${jooq_version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.jooq</groupId>
+                            <artifactId>jooq-meta-extensions</artifactId>
+                            <version>${jooq_version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.jooq</groupId>
+                            <artifactId>jooq-codegen</artifactId>
+                            <version>${jooq_version}</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <configurationFile>src/main/resources/jooq.xml</configurationFile>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
