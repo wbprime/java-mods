@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.12.0.xsd">
     <generator>
-        <!-- 代码生成器 -->
-        <name>org.jooq.codegen.JavaGenerator</name>
         <database>
             <name>org.jooq.meta.extensions.ddl.DDLDatabase</name>
             <properties>
@@ -21,19 +19,23 @@
             </properties>
         </database>
         <generate>
-            <validationAnnotations>true</validationAnnotations>
+            <validationAnnotations>false</validationAnnotations>
+
             <javaTimeTypes>true</javaTimeTypes>
+
             <pojos>true</pojos>
             <pojosEqualsAndHashCode>true</pojosEqualsAndHashCode>
             <pojosToString>true</pojosToString>
             <immutablePojos>false</immutablePojos>
             <serializablePojos>false</serializablePojos>
+
             <interfaces>true</interfaces>
             <serializableInterfaces>false</serializableInterfaces>
+
             <daos>true</daos>
         </generate>
         <target>
-            <packageName>im.wangbo.java.usecases.generated</packageName>
+            <packageName>im.wangbo.java.usecases.generated.ddl</packageName>
             <directory>src/main/java</directory>
             <encoding>UTF-8</encoding>
         </target>
