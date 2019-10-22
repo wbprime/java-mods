@@ -13,7 +13,7 @@
             <inputSchema>public</inputSchema>
         </database>
         <generate>
-            <validationAnnotations>true</validationAnnotations>
+            <validationAnnotations>false</validationAnnotations>
 
             <javaTimeTypes>true</javaTimeTypes>
 
