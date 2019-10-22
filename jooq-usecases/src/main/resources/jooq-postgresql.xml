@@ -4,16 +4,16 @@
         <driver>org.postgresql.Driver</driver>
         <url>jdbc:postgresql:jooq</url>
         <user>jooq</user>
-        <password>jOOQ@postgres</password>
-        <inputSchema>public</inputSchema>
+        <password>jOOQ@postgresql</password>
     </jdbc>
     <generator>
         <database>
             <name>org.jooq.meta.postgres.PostgresDatabase</name>
             <includes>.*</includes>
+            <inputSchema>public</inputSchema>
         </database>
         <generate>
-            <validationAnnotations>false</validationAnnotations>
+            <validationAnnotations>true</validationAnnotations>
 
             <javaTimeTypes>true</javaTimeTypes>
 

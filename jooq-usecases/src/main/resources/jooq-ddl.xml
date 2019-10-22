@@ -19,7 +19,7 @@
             </properties>
         </database>
         <generate>
-            <validationAnnotations>false</validationAnnotations>
+            <validationAnnotations>true</validationAnnotations>
 
             <javaTimeTypes>true</javaTimeTypes>
 

@@ -1,5 +1,5 @@
 CREATE TABLE author (
-  id              BIGINT(7)     NOT NULL PRIMARY KEY,
+  id              BIGINT(7)     NOT NULL AUTO_INCREMENT PRIMARY KEY,
   first_name      VARCHAR(50)   NOT NULL,
   last_name       VARCHAR(50)   NOT NULL,
   date_of_birth   DATE,
@@ -7,7 +7,7 @@ CREATE TABLE author (
 );
 
 CREATE TABLE book (
-  id              BIGINT(7)     NOT NULL PRIMARY KEY,
+  id              BIGINT(7)     NOT NULL AUTO_INCREMENT PRIMARY KEY,
   author_id       BIGINT(7)     NOT NULL,
   title           VARCHAR2(400) NOT NULL
 );
