@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
  *
  * Created at 2019-10-23 by Elvis Wang
  */
-class GeneratedBasedCrud {
+class GeneratedBasedCrudIT {
 
     @Test
     void test_crud() {
