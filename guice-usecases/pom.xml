@@ -37,16 +37,17 @@
         <maven_plugin_shade_version>3.0.0</maven_plugin_shade_version>
         <maven_plugin_surefire_version>2.20.1</maven_plugin_surefire_version>
         <maven_plugin_failsafe_version>2.20.1</maven_plugin_failsafe_version>
+        <maven_plugin_exec_version>1.6.0</maven_plugin_exec_version>
 
         <auto-value.version>1.6</auto-value.version>
         <jakarta_jsonp_api_version>1.1.6</jakarta_jsonp_api_version>
         <jakarta_jsonb_api_version>1.0.2</jakarta_jsonb_api_version>
         <jakarta_jsonp_glassfish_version>1.1.6</jakarta_jsonp_glassfish_version>
         <jakarta_jsonb_yasson_version>1.0.5</jakarta_jsonb_yasson_version>
-        <jooq_version>3.12.1</jooq_version>
-        <h2_version>1.4.200</h2_version>
-        <postgresql_versoin>42.2.8</postgresql_versoin>
+
+        <javax_inject_version>1</javax_inject_version>
         <google_guice_version>4.2.2</google_guice_version>
+        <google_guava_version>28.1-jre</google_guava_version>
 
         <junit-jupiter.version>5.4.2</junit-jupiter.version>
         <assertj_core_version>3.13.2</assertj_core_version>
@@ -54,20 +55,24 @@
 
     <dependencies>
         <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>${javax_inject_version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
             <version>${google_guice_version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jooq</groupId>
-            <artifactId>jooq</artifactId>
-            <version>${jooq_version}</version>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-multibindings</artifactId>
+            <version>${google_guice_version}</version>
         </dependency>
-
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2_version}</version>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${google_guava_version}</version>
         </dependency>
 
         <dependency>
@@ -206,6 +211,15 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>${maven_plugin_failsafe_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>${maven_plugin_exec_version}</version>
+                    <configuration>
+                        <mainClass>im.wangbo.java.usecases.guice.MainApp</mainClass>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

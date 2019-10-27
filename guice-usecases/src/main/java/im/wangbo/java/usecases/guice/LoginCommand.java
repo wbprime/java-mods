@@ -6,9 +6,12 @@ import java.util.List;
 public class LoginCommand implements Command {
   private final Outputter outputter;
 
+  private final Database database;
+
   @Inject
-  public LoginCommand(Outputter outputter) {
+  public LoginCommand(final Outputter outputter, final Database database) {
     this.outputter = outputter;
+    this.database = database;
   }
 
   @Override
@@ -19,7 +22,9 @@ public class LoginCommand implements Command {
 
     final String username = args.get(0);
 
-    outputter.output(username + " is logged in.");
+    final Database.Account account = database.getAccount(username);
+
+    outputter.output(username + " is logged in with balance: " + account.balance());
     return Status.HANDLED;
   }
 }
