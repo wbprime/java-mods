@@ -13,6 +13,7 @@ public class MainModule extends AbstractModule {
 
       mapBinder.addBinding(Commands.HELLO).to(HelloWorldCommand.class);
       mapBinder.addBinding(Commands.LOGIN).to(LoginCommand.class);
+      mapBinder.addBinding(Commands.DEPOSIT).to(DepositCommand.class);
     }
 
     bind(CommandRouter.class);

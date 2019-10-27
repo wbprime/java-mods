@@ -15,7 +15,7 @@ public class MainApp {
     final CommandRouter commandRouter = injector.getInstance(CommandRouter.class);
 
     int n = 0;
-    while (scanner.hasNextLine() && n < 3) {
+    while (scanner.hasNextLine() && n < 5) {
       n++;
       commandRouter.route(scanner.nextLine());
     }
