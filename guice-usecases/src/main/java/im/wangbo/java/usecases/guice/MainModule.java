@@ -1,26 +1,23 @@
 package im.wangbo.java.usecases.guice;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
-import com.google.inject.multibindings.MapBinder;
+import im.wangbo.java.usecases.guice.app.AppModule;
+import im.wangbo.java.usecases.guice.echo.EchoModule;
+import im.wangbo.java.usecases.guice.exit.ExitModule;
+import im.wangbo.java.usecases.guice.set.SetModule;
 
-public class MainModule extends AbstractModule {
-  @Override
-  protected void configure() {
-    {
-      final MapBinder<String, Command> mapBinder =
-          MapBinder.newMapBinder(binder(), String.class, Command.class);
+/**
+ * TODO Detail goes here.
+ *
+ * Created at 2019-10-28 by Elvis Wang
+ */
+final class MainModule extends AbstractModule {
 
-      mapBinder.addBinding(Commands.HELLO).to(HelloWorldCommand.class);
-      mapBinder.addBinding(Commands.LOGIN).to(LoginCommand.class);
-      mapBinder.addBinding(Commands.DEPOSIT).to(DepositCommand.class);
+    @Override
+    protected void configure() {
+        install(new AppModule());
+        install(new EchoModule());
+        install(new SetModule());
+        install(new ExitModule());
     }
-
-    bind(CommandRouter.class);
-  }
-
-  @Provides
-  private Outputter providesOutputter() {
-    return System.out::println;
-  }
 }

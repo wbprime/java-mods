@@ -2,6 +2,8 @@ package im.wangbo.java.usecases.guice;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import im.wangbo.java.usecases.guice.app.Command.Status;
+import im.wangbo.java.usecases.guice.app.CommandProcessor;
 import java.util.Scanner;
 
 public class MainApp {
@@ -9,16 +11,14 @@ public class MainApp {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
 
-        //      final CommandRouter commandRouter = new CommandRouter();
-
         final Injector injector = Guice.createInjector(new MainModule());
-//        final CommandRouter commandRouter = injector.getInstance(CommandRouter.class);
-        final CommandProcessor commandProcessor = injector.getInstance(CommandProcessor.class);
+        final CommandProcessor processor = injector.getInstance(CommandProcessor.class);
 
-        int n = 0;
-        while (scanner.hasNextLine() && n < 5) {
-            n++;
-            commandProcessor.process(scanner.nextLine());
+        while (scanner.hasNextLine()) {
+            final Status status = processor.process(scanner.nextLine());
+            if (status.equals(Status.QUITING)) {
+                break;
+            }
         }
     }
 }
