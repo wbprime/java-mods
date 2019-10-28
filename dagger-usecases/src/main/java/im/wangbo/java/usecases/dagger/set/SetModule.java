@@ -1,4 +1,4 @@
-package im.wangbo.java.usecases.dagger.exit;
+package im.wangbo.java.usecases.dagger.set;
 
 import dagger.Binds;
 import dagger.Module;
@@ -12,10 +12,10 @@ import im.wangbo.java.usecases.dagger.app.Command;
  * Created at 2019-10-28 by Elvis Wang
  */
 @Module
-public abstract class ExitModule {
+public abstract class SetModule {
 
     @Binds
     @IntoMap
-    @StringKey("exit")
-    abstract Command bindsCommand(final ExitCommand c);
+    @StringKey("set")
+    abstract Command bindsCommand(final SetCommand c);
 }

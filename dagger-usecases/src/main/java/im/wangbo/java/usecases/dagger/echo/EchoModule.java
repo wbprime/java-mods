@@ -17,5 +17,5 @@ public abstract class EchoModule {
     @Binds
     @IntoMap
     @StringKey("echo")
-    abstract Command bindsEchoModule(final EchoCommand c);
+    abstract Command bindsCommand(final EchoCommand c);
 }

@@ -3,12 +3,14 @@ package im.wangbo.java.usecases.dagger.app;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * TODO Detail goes here.
  *
  * Created at 2019-10-28 by Elvis Wang
  */
+@Singleton
 public class GlobalContext {
 
     private final Map<String, String> env;
