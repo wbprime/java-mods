@@ -19,7 +19,7 @@ public class CommandRouter {
     this.commands.putAll(cmds);
   }
 
-  Status route(final String input) {
+  Command.Result route(final String input) {
     final List<String> splitInput = split(input);
     if (splitInput.isEmpty()) {
       return invalidCommand(input);
@@ -32,15 +32,16 @@ public class CommandRouter {
     }
 
     final Status status = command.handleInput(splitInput.subList(1, splitInput.size()));
-    if (status == Status.INVALID) {
+    if (status.equals(Status.INVALID)) {
       outputter.output(commandKey + ": invalid arguments");
     }
-    return status;
+
+    return Command.Result.of(Status.HANDLED);
   }
 
-  private Status invalidCommand(String input) {
+  private Command.Result invalidCommand(String input) {
     outputter.output(String.format("couldn't understand \"%s\". please try again.", input));
-    return Status.INVALID;
+    return Command.Result.invalidCommand();
   }
 
   // Split on whitespace

@@ -15,7 +15,7 @@ public class LoginCommand implements Command {
   }
 
   @Override
-  public Status handleInput(final List<String> args) {
+  public Result handleInput(final List<String> args) {
     if (args.size() != 1) {
       return Command.invalidCommand();
     }
@@ -25,6 +25,6 @@ public class LoginCommand implements Command {
     final Database.Account account = database.getAccount(username);
 
     outputter.output(username + " is logged in with balance: " + account.balance());
-    return Status.HANDLED;
+    return Result.enterNestedCommandSet();
   }
 }
