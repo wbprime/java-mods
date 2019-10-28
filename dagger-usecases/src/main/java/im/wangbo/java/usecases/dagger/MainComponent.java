@@ -15,7 +15,7 @@ import javax.inject.Singleton;
  */
 @Component(modules = {AppModule.class, ExitModule.class, EchoModule.class, SetModule.class})
 @Singleton
-public interface MainComponent {
+interface MainComponent {
 
     static MainComponent of() {
         return DaggerMainComponent.create();
