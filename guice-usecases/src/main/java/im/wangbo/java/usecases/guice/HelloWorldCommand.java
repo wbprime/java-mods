@@ -1,9 +1,8 @@
 package im.wangbo.java.usecases.guice;
 
-import java.util.List;
 import javax.inject.Inject;
 
-public class HelloWorldCommand implements Command {
+public class HelloWorldCommand extends NoArgCommand implements Command {
 
     private final Outputter outputter;
 
@@ -13,10 +12,7 @@ public class HelloWorldCommand implements Command {
     }
 
     @Override
-    public Result handleInput(List<String> args) {
-        if (!args.isEmpty()) {
-            return Result.invalidCommand();
-        }
+    public Result handle() {
         outputter.output("world!");
         return Result.handled();
     }
