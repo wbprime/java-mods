@@ -11,12 +11,12 @@ import javax.inject.Inject;
  *
  * Created at 2019-10-28 by Elvis Wang
  */
-public class CommandParser {
+public class CommandProcessor {
 
     private final Map<String, Command> map;
 
     @Inject
-    public CommandParser(final Map<String, Command> map) {
+    public CommandProcessor(final Map<String, Command> map) {
         this.map = map;
     }
 

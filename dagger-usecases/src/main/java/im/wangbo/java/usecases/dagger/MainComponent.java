@@ -2,7 +2,7 @@ package im.wangbo.java.usecases.dagger;
 
 import dagger.Component;
 import im.wangbo.java.usecases.dagger.app.AppModule;
-import im.wangbo.java.usecases.dagger.app.CommandParser;
+import im.wangbo.java.usecases.dagger.app.CommandProcessor;
 import im.wangbo.java.usecases.dagger.echo.EchoModule;
 import im.wangbo.java.usecases.dagger.exit.ExitModule;
 
@@ -18,5 +18,5 @@ public interface MainComponent {
         return DaggerMainComponent.create();
     }
 
-    CommandParser parser();
+    CommandProcessor commandProcessor();
 }
