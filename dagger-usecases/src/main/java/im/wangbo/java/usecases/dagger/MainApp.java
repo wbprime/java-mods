@@ -9,7 +9,8 @@ public class MainApp {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
 
-        final CommandProcessor processor = MainComponent.of().commandProcessor();
+        final MainComponent mainComponent = MainComponent.of();
+        final CommandProcessor processor = mainComponent.commandProcessor();
 
         while (scanner.hasNextLine()) {
             final Status status = processor.process(scanner.nextLine());
