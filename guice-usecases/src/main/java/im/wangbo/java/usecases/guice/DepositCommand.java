@@ -1,29 +1,26 @@
 package im.wangbo.java.usecases.guice;
 
-import javax.inject.Inject;
+import im.wangbo.java.usecases.guice.Database.Account;
 import java.math.BigDecimal;
-import java.util.List;
+import javax.inject.Inject;
 
-public class DepositCommand implements Command {
-  private final Outputter outputter;
+public class DepositCommand extends BigDecimalCommand implements Command {
 
-  private final Database database;
+    private final Outputter outputter;
 
-  @Inject
-  public DepositCommand(final Outputter outputter, final Database database) {
-    this.outputter = outputter;
-    this.database = database;
-  }
+    private final Account account;
 
-  @Override
-  public Status handleInput(final List<String> args) {
-    if (args.size() != 2) {
-      return Status.INVALID;
+    @Inject
+    public DepositCommand(final Outputter outputter, final Account account) {
+        super(outputter);
+
+        this.outputter = outputter;
+        this.account = account;
     }
 
-    Database.Account account = database.getAccount(args.get(0));
-    account.deposit(new BigDecimal(args.get(1)));
-    outputter.output(account.username() + " now has: " + account.balance());
-    return Status.HANDLED;
-  }
+    @Override
+    public void handleAmount(final BigDecimal amount) {
+        account.deposit(amount);
+        outputter.output(account.username() + " now has: " + account.balance());
+    }
 }

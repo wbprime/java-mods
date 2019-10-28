@@ -1,22 +1,23 @@
 package im.wangbo.java.usecases.guice;
 
-import javax.inject.Inject;
 import java.util.List;
+import javax.inject.Inject;
 
 public class HelloWorldCommand implements Command {
-  private final Outputter outputter;
 
-  @Inject
-  public HelloWorldCommand(final Outputter outputter) {
-    this.outputter = outputter;
-  }
+    private final Outputter outputter;
 
-  @Override
-  public Status handleInput(List<String> args) {
-    if (!args.isEmpty()) {
-      return Status.INVALID;
+    @Inject
+    public HelloWorldCommand(final Outputter outputter) {
+        this.outputter = outputter;
     }
-    outputter.output("world!");
-    return Status.HANDLED;
-  }
+
+    @Override
+    public Result handleInput(List<String> args) {
+        if (!args.isEmpty()) {
+            return Result.invalidCommand();
+        }
+        outputter.output("world!");
+        return Result.handled();
+    }
 }

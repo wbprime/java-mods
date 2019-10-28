@@ -2,22 +2,23 @@ package im.wangbo.java.usecases.guice;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-
 import java.util.Scanner;
 
 public class MainApp {
-  public static void main(String[] args) {
-    final Scanner scanner = new Scanner(System.in);
 
-    //      final CommandRouter commandRouter = new CommandRouter();
+    public static void main(String[] args) {
+        final Scanner scanner = new Scanner(System.in);
 
-    final Injector injector = Guice.createInjector(new MainModule());
-    final CommandRouter commandRouter = injector.getInstance(CommandRouter.class);
+        //      final CommandRouter commandRouter = new CommandRouter();
 
-    int n = 0;
-    while (scanner.hasNextLine() && n < 5) {
-      n++;
-      commandRouter.route(scanner.nextLine());
+        final Injector injector = Guice.createInjector(new MainModule());
+//        final CommandRouter commandRouter = injector.getInstance(CommandRouter.class);
+        final CommandProcessor commandProcessor = injector.getInstance(CommandProcessor.class);
+
+        int n = 0;
+        while (scanner.hasNextLine() && n < 5) {
+            n++;
+            commandProcessor.process(scanner.nextLine());
+        }
     }
-  }
 }

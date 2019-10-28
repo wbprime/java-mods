@@ -40,6 +40,7 @@
         <maven_plugin_exec_version>1.6.0</maven_plugin_exec_version>
 
         <auto-value.version>1.6</auto-value.version>
+        <auto-factory.version>1.0-beta6</auto-factory.version>
         <jakarta_jsonp_api_version>1.1.6</jakarta_jsonp_api_version>
         <jakarta_jsonb_api_version>1.0.2</jakarta_jsonb_api_version>
         <jakarta_jsonp_glassfish_version>1.1.6</jakarta_jsonp_glassfish_version>
@@ -73,6 +74,12 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${google_guava_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.auto.factory</groupId>
+            <artifactId>auto-factory</artifactId>
+            <version>${auto-factory.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -146,13 +153,6 @@
                         <optimize>true</optimize>
                         <!-- Slightly faster builds, see https://issues.apache.org/jira/browse/MCOMPILER-209 -->
                         <useIncrementalCompilation>false</useIncrementalCompilation>
-                        <!--                        <annotationProcessorPaths>-->
-                        <!--                            <path>-->
-                        <!--                                <groupId>com.google.auto.value</groupId>-->
-                        <!--                                <artifactId>auto-value</artifactId>-->
-                        <!--                                <version>${auto-value.version}</version>-->
-                        <!--                            </path>-->
-                        <!--                        </annotationProcessorPaths>-->
                     </configuration>
                 </plugin>
 
