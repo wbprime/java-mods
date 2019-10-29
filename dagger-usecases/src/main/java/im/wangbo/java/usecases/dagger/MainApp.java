@@ -9,7 +9,12 @@ public class MainApp {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
 
-        final MainComponent mainComponent = MainComponent.of();
+        final MainComponent mainComponent = MainComponent.builder()
+            .setMysqlHost("TODO")
+            .setMysqlPort(100)
+            .setMysqlUsername("sa")
+            .setMysqlPassword("sapwd")
+            .build();
         final CommandProcessor processor = mainComponent.commandProcessor();
 
         while (scanner.hasNextLine()) {

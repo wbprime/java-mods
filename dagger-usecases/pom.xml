@@ -48,6 +48,9 @@
         <javax_inject_version>1</javax_inject_version>
         <google_dagger2_version>2.24</google_dagger2_version>
         <google_guava_version>28.1-jre</google_guava_version>
+        <jooq_version>3.12.1</jooq_version>
+        <hikaricp_version>3.4.1</hikaricp_version>
+        <mysql_version>8.0.18</mysql_version>
 
         <junit-jupiter.version>5.4.2</junit-jupiter.version>
         <assertj_core_version>3.13.2</assertj_core_version>
@@ -63,6 +66,23 @@
             <groupId>com.google.dagger</groupId>
             <artifactId>dagger</artifactId>
             <version>${google_dagger2_version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>${jooq_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikaricp_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql_version}</version>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>
