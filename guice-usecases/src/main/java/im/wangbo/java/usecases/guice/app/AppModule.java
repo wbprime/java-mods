@@ -8,7 +8,7 @@ import com.google.inject.Provides;
  *
  * Created at 2019-10-28 by Elvis Wang
  */
-public class AppModule extends AbstractModule {
+public final class AppModule extends AbstractModule {
 
     @Provides
     static Stdout providesStdout() {

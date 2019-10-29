@@ -49,6 +49,9 @@
         <javax_inject_version>1</javax_inject_version>
         <google_guice_version>4.2.2</google_guice_version>
         <google_guava_version>28.1-jre</google_guava_version>
+        <jooq_version>3.12.1</jooq_version>
+        <hikaricp_version>3.4.1</hikaricp_version>
+        <mysql_version>8.0.18</mysql_version>
 
         <junit-jupiter.version>5.4.2</junit-jupiter.version>
         <assertj_core_version>3.13.2</assertj_core_version>
@@ -70,16 +73,22 @@
             <artifactId>guice-multibindings</artifactId>
             <version>${google_guice_version}</version>
         </dependency>
+
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${google_guava_version}</version>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>${jooq_version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.auto.factory</groupId>
-            <artifactId>auto-factory</artifactId>
-            <version>${auto-factory.version}</version>
-            <scope>provided</scope>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikaricp_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql_version}</version>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>

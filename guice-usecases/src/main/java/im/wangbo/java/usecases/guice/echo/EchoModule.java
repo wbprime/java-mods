@@ -9,7 +9,7 @@ import im.wangbo.java.usecases.guice.app.Command;
  *
  * Created at 2019-10-28 by Elvis Wang
  */
-public class EchoModule extends AbstractModule {
+public final class EchoModule extends AbstractModule {
 
     @Override
     protected void configure() {

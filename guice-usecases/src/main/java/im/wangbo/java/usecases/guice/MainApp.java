@@ -11,7 +11,9 @@ public class MainApp {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
 
-        final Injector injector = Guice.createInjector(new MainModule());
+        final Injector injector = Guice.createInjector(new MainModule(
+            "TODO", 1993, "TODO", "TODO"
+        ));
         final CommandProcessor processor = injector.getInstance(CommandProcessor.class);
 
         while (scanner.hasNextLine()) {
