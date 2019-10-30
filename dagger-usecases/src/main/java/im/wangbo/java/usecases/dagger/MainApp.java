@@ -7,8 +7,6 @@ import java.util.Scanner;
 public class MainApp {
 
     public static void main(String[] args) {
-        final Scanner scanner = new Scanner(System.in);
-
         final MainComponent mainComponent = MainComponent.builder()
             .setMysqlHost("TODO")
             .setMysqlPort(100)
@@ -17,6 +15,7 @@ public class MainApp {
             .build();
         final CommandProcessor processor = mainComponent.commandProcessor();
 
+        final Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
             final Status status = processor.process(scanner.nextLine());
             if (status.equals(Status.QUITING)) {
