@@ -8,10 +8,9 @@ public class MainApp {
 
     public static void main(String[] args) {
         final MainComponent mainComponent = MainComponent.builder()
-            .setMysqlHost("TODO")
-            .setMysqlPort(100)
-            .setMysqlUsername("sa")
-            .setMysqlPassword("sapwd")
+            .setJdbcUrl("jdbc:h2:mem:test")
+            .setJdbcUsername("h2")
+            .setJdbcPassword("user@H2")
             .build();
         final CommandProcessor processor = mainComponent.commandProcessor();
 

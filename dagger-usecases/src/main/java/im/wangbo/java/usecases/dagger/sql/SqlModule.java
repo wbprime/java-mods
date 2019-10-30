@@ -1,17 +1,18 @@
-package im.wangbo.java.usecases.dagger.mysql;
+package im.wangbo.java.usecases.dagger.sql;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import dagger.Binds;
-import dagger.BindsOptionalOf;
 import dagger.Module;
 import dagger.Provides;
 import dagger.multibindings.IntoMap;
 import dagger.multibindings.StringKey;
 import im.wangbo.java.usecases.dagger.app.Command;
-import java.util.Optional;
+import im.wangbo.java.usecases.dagger.sql.SqlUtils.JdbcUrl;
 import javax.inject.Named;
 import javax.sql.DataSource;
+import org.jooq.SQLDialect;
+import org.jooq.tools.jdbc.JDBCUtils;
 
 /**
  * TODO Detail goes here.
@@ -19,21 +20,25 @@ import javax.sql.DataSource;
  * Created at 2019-10-28 by Elvis Wang
  */
 @Module
-public abstract class MysqlModule {
+public abstract class SqlModule {
 
     @Binds
     @IntoMap
-    @StringKey("mysql")
-    abstract Command bindsCommand(final MysqlCommand c);
+    @StringKey("sql")
+    abstract Command bindsCommand(final SqlCommand c);
+
+    @Provides
+    static SQLDialect providesSqlDialect(@JdbcUrl final String url) {
+        return JDBCUtils.dialect(url);
+    }
 
     @Provides
     static DataSource providesDataSource(
-        @Named("mysql_host") final String host,
-        @Named("mysql_port") final Optional<Integer> port,
-        @Named("mysql_username") final String username,
-        @Named("mysql_password") final String pwd) {
+        @JdbcUrl final String url,
+        @Named(SqlUtils.NAMED_KEY_JDBC_USERNAME) final String username,
+        @Named(SqlUtils.NAMED_KEY_JDBC_PASSWORD) final String pwd) {
         final HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://" + host + port.map(n -> ":" + n).orElse("") + "/usecases");
+        config.setJdbcUrl(url);
         config.setUsername(username);
         config.setPassword(pwd);
         config.addDataSourceProperty("cachePrepStmts", "true");
@@ -42,8 +47,4 @@ public abstract class MysqlModule {
 
         return new HikariDataSource(config);
     }
-
-    @BindsOptionalOf
-    @Named("mysql_port")
-    abstract Integer providesDefaultMysqlPort();
 }

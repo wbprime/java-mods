@@ -6,8 +6,10 @@ import im.wangbo.java.usecases.dagger.app.AppModule;
 import im.wangbo.java.usecases.dagger.app.CommandProcessor;
 import im.wangbo.java.usecases.dagger.echo.EchoModule;
 import im.wangbo.java.usecases.dagger.exit.ExitModule;
-import im.wangbo.java.usecases.dagger.mysql.MysqlModule;
 import im.wangbo.java.usecases.dagger.set.SetModule;
+import im.wangbo.java.usecases.dagger.sql.SqlModule;
+import im.wangbo.java.usecases.dagger.sql.SqlUtils;
+import im.wangbo.java.usecases.dagger.sql.SqlUtils.JdbcUrl;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
@@ -21,7 +23,7 @@ import javax.inject.Singleton;
     ExitModule.class,
     EchoModule.class,
     SetModule.class,
-    MysqlModule.class
+    SqlModule.class
 })
 @Singleton
 interface MainComponent {
@@ -35,13 +37,13 @@ interface MainComponent {
     @Component.Builder
     interface Builder {
 
-        Builder setMysqlHost(@BindsInstance @Named("mysql_host") final String host);
+        Builder setJdbcUrl(@BindsInstance @JdbcUrl final String url);
 
-        Builder setMysqlPort(@BindsInstance @Named("mysql_port") final int port);
+        Builder setJdbcUsername(
+            @BindsInstance @Named(SqlUtils.NAMED_KEY_JDBC_USERNAME) final String username);
 
-        Builder setMysqlUsername(@BindsInstance @Named("mysql_username") final String username);
-
-        Builder setMysqlPassword(@BindsInstance @Named("mysql_password") final String pwd);
+        Builder setJdbcPassword(
+            @BindsInstance @Named(SqlUtils.NAMED_KEY_JDBC_PASSWORD) final String pwd);
 
         MainComponent build();
     }
