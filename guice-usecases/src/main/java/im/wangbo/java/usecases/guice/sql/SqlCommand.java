@@ -1,4 +1,4 @@
-package im.wangbo.java.usecases.guice.mysql;
+package im.wangbo.java.usecases.guice.sql;
 
 import im.wangbo.java.usecases.guice.app.Command;
 import im.wangbo.java.usecases.guice.app.Stderr;
@@ -16,16 +16,21 @@ import org.jooq.impl.DSL;
  *
  * Created at 2019-10-28 by Elvis Wang
  */
-final class MysqlCommand implements Command {
+final class SqlCommand implements Command {
 
     private final Stdout stdout;
     private final Stderr stderr;
 
+    private final SQLDialect dialect;
     private final DataSource dataSource;
 
     @Inject
-    MysqlCommand(final DataSource dataSource, final Stdout stdout, final Stderr stderr) {
+    SqlCommand(final DataSource dataSource,
+        final SQLDialect dialect,
+        final Stdout stdout, final Stderr stderr) {
+
         this.dataSource = dataSource;
+        this.dialect = dialect;
 
         this.stdout = stdout;
         this.stderr = stderr;
@@ -35,11 +40,11 @@ final class MysqlCommand implements Command {
     public Status handleInput(final List<String> args) {
         final int n = args.size();
         if (n <= 1) {
-            stderr.println("Usage: mysql sql-command");
+            stderr.println("Usage: sql SQL-commands");
             return Status.FAILED;
         }
 
-        final DSLContext dsl = DSL.using(dataSource, SQLDialect.MYSQL);
+        final DSLContext dsl = DSL.using(dataSource, dialect);
         try {
             final int re = dsl.execute(String.join(" ", args));
             stdout.println("Return code: " + re);

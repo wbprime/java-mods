@@ -10,7 +10,7 @@ public class MainApp {
 
     public static void main(String[] args) {
         final Injector injector = Guice.createInjector(new MainModule(
-            "TODO", 1993, "TODO", "TODO"
+            "jdbc:h2:mem:test", "h2", "user@H2"
         ));
         final CommandProcessor processor = injector.getInstance(CommandProcessor.class);
 

@@ -5,8 +5,10 @@ import com.google.inject.name.Names;
 import im.wangbo.java.usecases.guice.app.AppModule;
 import im.wangbo.java.usecases.guice.echo.EchoModule;
 import im.wangbo.java.usecases.guice.exit.ExitModule;
-import im.wangbo.java.usecases.guice.mysql.MysqlModule;
 import im.wangbo.java.usecases.guice.set.SetModule;
+import im.wangbo.java.usecases.guice.sql.SqlModule;
+import im.wangbo.java.usecases.guice.sql.SqlUtils;
+import im.wangbo.java.usecases.guice.sql.SqlUtils.JdbcUrl;
 
 /**
  * TODO Detail goes here.
@@ -15,31 +17,28 @@ import im.wangbo.java.usecases.guice.set.SetModule;
  */
 final class MainModule extends AbstractModule {
 
-    private final String mysqlHost;
-    private final int mysqlPort;
-    private final String mysqlUsername;
-    private final String mysqlPwd;
+    private final String jdbcUrl;
+    private final String jdbcUsername;
+    private final String jdbcPwd;
 
-    MainModule(final String mysqlHost, final int mysqlPort,
-        final String mysqlUsername, final String mysqlPwd) {
-
-        this.mysqlHost = mysqlHost;
-        this.mysqlPort = mysqlPort;
-        this.mysqlUsername = mysqlUsername;
-        this.mysqlPwd = mysqlPwd;
+    MainModule(final String url, final String username, final String pwd) {
+        this.jdbcUrl = url;
+        this.jdbcUsername = username;
+        this.jdbcPwd = pwd;
     }
 
     @Override
     protected void configure() {
-        bindConstant().annotatedWith(Names.named("mysql_host")).to(mysqlHost);
-        bindConstant().annotatedWith(Names.named("mysql_port")).to(mysqlPort);
-        bindConstant().annotatedWith(Names.named("mysql_username")).to(mysqlUsername);
-        bindConstant().annotatedWith(Names.named("mysql_password")).to(mysqlPwd);
+        bindConstant().annotatedWith(JdbcUrl.class).to(jdbcUrl);
+        bindConstant().annotatedWith(Names.named(SqlUtils.NAMED_KEY_JDBC_USERNAME))
+            .to(jdbcUsername);
+        bindConstant().annotatedWith(Names.named(SqlUtils.NAMED_KEY_JDBC_PASSWORD))
+            .to(jdbcPwd);
 
         install(new AppModule());
         install(new EchoModule());
         install(new SetModule());
         install(new ExitModule());
-        install(new MysqlModule());
+        install(new SqlModule());
     }
 }
