@@ -1,5 +1,6 @@
 package im.wangbo.java.usecases.cache;
 
+import javax.cache.Caching;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
 import org.apache.ignite.Ignition;
@@ -15,6 +16,7 @@ public class DataGridApp {
     public static void main(String[] args) throws Exception {
         final IgniteConfiguration conf = new IgniteConfiguration();
         conf.setPeerClassLoadingEnabled(true);
+        conf.setClientMode(true);
         try (Ignite ignite = Ignition.start(conf)) {
             IgniteCache<Integer, String> cache = ignite.getOrCreateCache("myCacheName");
 

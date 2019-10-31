@@ -15,7 +15,7 @@ public class ServiceGridApp {
         //
         // remote nodes need to be started with PeerClassLoadingEnabled
         //
-        
+
         final IgniteConfiguration conf = new IgniteConfiguration();
         conf.setPeerClassLoadingEnabled(true);
         try (Ignite ignite = Ignition.start(conf)) {
