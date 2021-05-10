@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<coherence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://xmlns.oracle.com/coherence/coherence-operational-config"
+           xsi:schemaLocation="http://xmlns.oracle.com/coherence/coherence-operational-config coherence-operational-config.xsd"
+>
+
+    <cluster-config>
+        <member-identity>
+            <cluster-name>testing</cluster-name>
+            <site-name>coherence.citics.com</site-name>
+            <rack-name>main</rack-name>
+            <machine-name>h1</machine-name>
+            <member-name>t1</member-name>
+            <role-name>qa</role-name>
+        </member-identity>
+
+        <unicast-listener>
+            <well-known-addresses>
+                <address id="1">192.168.1.89</address>
+            </well-known-addresses>
+        </unicast-listener>
+    </cluster-config>
+
+    <logging-config>
+        <destination>jdk</destination>
+    </logging-config>
+</coherence>
