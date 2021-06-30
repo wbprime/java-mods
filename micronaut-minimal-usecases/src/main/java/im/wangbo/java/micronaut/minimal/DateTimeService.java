@@ -13,13 +13,13 @@ import java.util.List;
  * @since 1.0.0
  */
 @Singleton
-class ActionService
+class DateTimeService
     {
     private final Clock clock;
     private final Iterable<DateTimeConsumer> consumers;
 
     @Inject
-    public ActionService(Clock clock, List<DateTimeConsumer> consumers)
+    public DateTimeService(Clock clock, List<DateTimeConsumer> consumers)
         {
         this.clock = clock;
         this.consumers = consumers;
