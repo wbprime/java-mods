@@ -6,6 +6,7 @@ import io.micronaut.runtime.Micronaut;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Application
@@ -18,17 +19,29 @@ public class Application
             {
             final UserRepository repository = context.getBean(UserRepository.class);
 
-            {
-            final DUser u = new DUser();
-            u.setName("Elvis Wang");
-            u.setBirthday(OffsetDateTime.now());
+            if (false)
+                {
+                final DUser u = new DUser();
+                u.setName("Elvis Wang");
+                u.setBirthday(OffsetDateTime.now());
 
-            u.setCreatedAt(Instant.now().toEpochMilli());
-            u.setLastUpdatedAt(u.getCreatedAt());
-            final DUser inserted = repository.save(u);
+                u.setCreatedAt(Instant.now().toEpochMilli());
+                u.setLastUpdatedAt(u.getCreatedAt());
+                final DUser inserted = repository.save(u);
 
-            L.info(inserted::toString);
-            }
+                L.info(inserted::toString);
+                }
+            try
+                {
+//            repository.inTransaction(() -> L.warning("Do nothing"));
+                repository.inTransaction(() -> {
+                throw new RuntimeException("failed transaction");
+                });
+                }
+            catch (RuntimeException ex)
+                {
+                L.log(Level.SEVERE, "in transaction failure", ex);
+                }
             {
             final List<DUser> users = repository.findByBirthdayNotAfter(OffsetDateTime.now());
             {
