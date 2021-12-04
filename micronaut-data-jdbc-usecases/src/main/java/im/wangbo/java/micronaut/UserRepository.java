@@ -4,7 +4,6 @@ import io.micronaut.data.jdbc.annotation.JdbcRepository;
 import io.micronaut.data.model.query.builder.sql.Dialect;
 import io.micronaut.data.repository.CrudRepository;
 
-import javax.transaction.Transactional;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -22,8 +21,6 @@ interface UserRepository extends CrudRepository<DUser, Long>
 
     List<DUser> findByBirthdayNotAfter(final OffsetDateTime date);
 
-    @Transactional(Transactional.TxType.SUPPORTS)
-//    @Transactional(Transactional.TxType.REQUIRED)
     default void inTransaction(final Runnable r)
         {
         final DUser u = new DUser();
