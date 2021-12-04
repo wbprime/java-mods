@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>im.wangbo.java</groupId>
+    <artifactId>openhft-usecases</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <maven_build_timestamp_format>yyyy-MM-dd HH:mm:ssZ</maven_build_timestamp_format>
+        <compiler_source_version>1.8</compiler_source_version>
+        <compiler_target_version>1.8</compiler_target_version>
+        <compiler_testTarget_version>1.8</compiler_testTarget_version>
+        <compiler_testSource_version>1.8</compiler_testSource_version>
+
+        <project_source_encoding>UTF-8</project_source_encoding>
+        <project_resource_encoding>UTF-8</project_resource_encoding>
+        <project_reporting_output_encoding>UTF-8</project_reporting_output_encoding>
+
+        <maven_plugin_source_version>3.0.1</maven_plugin_source_version>
+        <maven_plugin_compiler_version>3.6.1</maven_plugin_compiler_version>
+        <maven_plugin_jar_version>3.0.2</maven_plugin_jar_version>
+        <maven_plugin_assembly_version>3.0.0</maven_plugin_assembly_version>
+        <maven_plugin_dependency_version>3.0.0</maven_plugin_dependency_version>
+        <maven_plugin_resources_version>3.0.2</maven_plugin_resources_version>
+        <maven_plugin_clean_version>3.0.0</maven_plugin_clean_version>
+        <maven_plugin_enforcer_version>1.4.1</maven_plugin_enforcer_version>
+        <maven_plugin_deploy_version>2.8.2</maven_plugin_deploy_version>
+        <maven_plugin_install_version>2.5.2</maven_plugin_install_version>
+        <maven_plugin_release_version>2.5.3</maven_plugin_release_version>
+        <maven_plugin_shade_version>3.0.0</maven_plugin_shade_version>
+        <maven_plugin_surefire_version>2.20.1</maven_plugin_surefire_version>
+        <maven_plugin_failsafe_version>2.20.1</maven_plugin_failsafe_version>
+
+        <auto-value.version>1.7.4</auto-value.version>
+        <auto-service.version>1.0-rc6</auto-service.version>
+        <flogger.version>0.5.1</flogger.version>
+        <jakarta_jsonp_api_version>1.1.6</jakarta_jsonp_api_version>
+        <jakarta_jsonb_api_version>1.0.2</jakarta_jsonb_api_version>
+        <jakarta_jsonp_glassfish_version>1.1.6</jakarta_jsonp_glassfish_version>
+        <jakarta_jsonb_yasson_version>1.0.5</jakarta_jsonb_yasson_version>
+        <jooq_version>3.12.1</jooq_version>
+        <slf4j_version>1.7.30</slf4j_version>
+
+        <junit-jupiter.version>5.4.2</junit-jupiter.version>
+        <assertj_core_version>3.13.2</assertj_core_version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.openhft</groupId>
+            <artifactId>chronicle-queue</artifactId>
+            <version>5.21ea80</version>
+        </dependency>
+        <dependency>
+            <groupId>net.openhft</groupId>
+            <artifactId>chronicle-map</artifactId>
+            <version>3.21ea81</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j_version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.14.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.auto.value</groupId>
+            <artifactId>auto-value-annotations</artifactId>
+            <version>${auto-value.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj_core_version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-Djava.util.logging.</argument>
+                        <argument>-cp</argument>
+                        <classpath/>
+                        <argument>im.wangbo.java.usecases.openhft.MainApp</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven_plugin_jar_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven_plugin_assembly_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven_plugin_clean_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven_plugin_source_version}</version>
+                    <configuration>
+                        <attach>true</attach>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven_plugin_compiler_version}</version>
+                    <configuration>
+                        <source>${compiler_source_version}</source>
+                        <target>${compiler_target_version}</target>
+                        <testSource>${compiler_testSource_version}</testSource>
+                        <testTarget>${compiler_testTarget_version}</testTarget>
+                        <encoding>${project_source_encoding}</encoding>
+                        <optimize>true</optimize>
+                        <!-- Slightly faster builds, see https://issues.apache.org/jira/browse/MCOMPILER-209 -->
+                        <useIncrementalCompilation>false</useIncrementalCompilation>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>com.google.auto.service</groupId>
+                                <artifactId>auto-service</artifactId>
+                                <version>${auto-service.version}</version>
+                            </path>
+                            <path>
+                                <groupId>com.google.auto.value</groupId>
+                                <artifactId>auto-value</artifactId>
+                                <version>${auto-value.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven_plugin_dependency_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven_plugin_deploy_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven_plugin_install_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${maven_plugin_release_version}</version>
+                    <configuration>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <mavenExecutorId>forked-path</mavenExecutorId>
+                        <useReleaseProfile>false</useReleaseProfile>
+                        <releaseProfiles>release</releaseProfiles>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven_plugin_resources_version}</version>
+                    <configuration>
+                        <encoding>${project_resource_encoding}</encoding>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>${maven_plugin_shade_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven_plugin_surefire_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${maven_plugin_failsafe_version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
