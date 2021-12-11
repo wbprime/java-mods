@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>im.wangbo.java</groupId>
+    <artifactId>flogger-usecases</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <maven_build_timestamp_format>yyyy-MM-dd HH:mm:ssZ</maven_build_timestamp_format>
+        <compiler_source_version>11</compiler_source_version>
+        <compiler_target_version>11</compiler_target_version>
+        <compiler_testTarget_version>11</compiler_testTarget_version>
+        <compiler_testSource_version>11</compiler_testSource_version>
+
+        <project_source_encoding>UTF-8</project_source_encoding>
+        <project_resource_encoding>UTF-8</project_resource_encoding>
+        <project_reporting_output_encoding>UTF-8</project_reporting_output_encoding>
+
+        <maven_plugin_source_version>3.0.1</maven_plugin_source_version>
+        <maven_plugin_compiler_version>3.6.1</maven_plugin_compiler_version>
+        <maven_plugin_jar_version>3.0.2</maven_plugin_jar_version>
+        <maven_plugin_assembly_version>3.0.0</maven_plugin_assembly_version>
+        <maven_plugin_dependency_version>3.0.0</maven_plugin_dependency_version>
+        <maven_plugin_resources_version>3.0.2</maven_plugin_resources_version>
+        <maven_plugin_clean_version>3.0.0</maven_plugin_clean_version>
+        <maven_plugin_enforcer_version>1.4.1</maven_plugin_enforcer_version>
+        <maven_plugin_deploy_version>2.8.2</maven_plugin_deploy_version>
+        <maven_plugin_install_version>2.5.2</maven_plugin_install_version>
+        <maven_plugin_release_version>2.5.3</maven_plugin_release_version>
+        <maven_plugin_shade_version>3.0.0</maven_plugin_shade_version>
+        <maven_plugin_surefire_version>2.20.1</maven_plugin_surefire_version>
+        <maven_plugin_failsafe_version>2.20.1</maven_plugin_failsafe_version>
+        <maven_plugin_exec_version>1.6.0</maven_plugin_exec_version>
+
+        <google_guava_version>30-jre</google_guava_version>
+        <google_flogger_version>0.7.1</google_flogger_version>
+        <log4j_version>2.14.1</log4j_version>
+
+        <junit-jupiter.version>5.4.2</junit-jupiter.version>
+        <assertj_core_version>3.13.2</assertj_core_version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>30.1.1-jre</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.flogger</groupId>
+            <artifactId>flogger</artifactId>
+            <version>${google_flogger_version}</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.google.flogger</groupId>-->
+<!--            <artifactId>flogger-system-backend</artifactId>-->
+<!--            <version>${google_flogger_version}</version>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.google.flogger</groupId>
+            <artifactId>flogger-log4j2-backend</artifactId>
+            <version>${google_flogger_version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j_version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj_core_version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven_plugin_jar_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven_plugin_assembly_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven_plugin_clean_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven_plugin_source_version}</version>
+                    <configuration>
+                        <attach>true</attach>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven_plugin_compiler_version}</version>
+                    <configuration>
+                        <source>${compiler_source_version}</source>
+                        <target>${compiler_target_version}</target>
+                        <testSource>${compiler_testSource_version}</testSource>
+                        <testTarget>${compiler_testTarget_version}</testTarget>
+                        <release>11</release>
+                        <encoding>${project_source_encoding}</encoding>
+                        <optimize>true</optimize>
+                        <!-- Slightly faster builds, see https://issues.apache.org/jira/browse/MCOMPILER-209 -->
+                        <useIncrementalCompilation>false</useIncrementalCompilation>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven_plugin_dependency_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven_plugin_deploy_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven_plugin_install_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${maven_plugin_release_version}</version>
+                    <configuration>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <mavenExecutorId>forked-path</mavenExecutorId>
+                        <useReleaseProfile>false</useReleaseProfile>
+                        <releaseProfiles>release</releaseProfiles>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven_plugin_resources_version}</version>
+                    <configuration>
+                        <encoding>${project_resource_encoding}</encoding>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>${maven_plugin_shade_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven_plugin_surefire_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${maven_plugin_failsafe_version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>${maven_plugin_exec_version}</version>
+                    <configuration>
+                        <mainClass>im.wangbo.java.usecases.guice.MainApp</mainClass>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--status，log4j2自身的日志级别，OFF>FATAL>ERROR>WARN>INFO>DEBUG>TRACE>ALL-->
+<!--monitorInterval，重新读取配置文件的间隔时间，单位为秒-->
+<Configuration status="ERROR" monitorInterval="5" shutdownHook="disable">
+    <!--Properties，属性（可选），用来定义常量，之后在其他配置项中通过${变量名}引用-->
+    <Properties>
+        <!--_TRACE_ID，业务自定义变量-->
+        <property name="ALL_PATTERN">[%d][%level][%thread][%c{1.}]- %msg \$%n</property>
+    </Properties>
+
+    <!--Appenders，输出源，用于定义日志输出的地方-->
+    <Appenders>
+        <!--控制台-->
+        <!--        <Console name="C" target="SYSTEM_OUT">-->
+        <!--            <PatternLayout charset='UTF-8'>-->
+        <!--                <Pattern>${ALL_PATTERN}</Pattern>-->
+        <!--            </PatternLayout>-->
+        <!--        </Console>-->
+
+        <File name="F" fileName="app.log" append="true">
+            <PatternLayout>
+                <Pattern>${ALL_PATTERN}</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <!--每个配置都必须有一个Root logger，没有name属性、不支持additivity属性-->
+        <!--level：日志输出级别，从低到高分别为：All<TRACE<DEBUG<INFO<WARN<ERROR<FATAL<OFF-->
+        <!--includeLocation：输出位置信息需要栈快照，对性能影响很大，所以异步logger默认关闭该功能，可通过设置为true打开-->
+        <!--AppenderRef：指定该日志输出到哪个Appender-->
+        <Root level="OFF">
+            <AppenderRef ref="F"/>
+            <!--            <AppenderRef ref="F"/>-->
+        </Root>
+        <!--name：该Logger所适用的类或者类所在的包路径-->
+        <!--additivity：设置日志事件是否在Root logger输出，为避免重复输出，可设置为false-->
+        <!--        <Logger name="com.citics.itst.rootnet.sot.core" level="WARN"/>-->
+        <Logger name="im.wangbo.java.usecases.flogger" level="DEBUG"/>
+    </Loggers>
+</Configuration>
