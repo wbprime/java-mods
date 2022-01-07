@@ -51,7 +51,7 @@
         <google_guava_version>28.1-jre</google_guava_version>
         <jooq_version>3.12.1</jooq_version>
         <hikaricp_version>3.4.1</hikaricp_version>
-        <h2_version>1.4.200</h2_version>
+        <h2_version>2.0.206</h2_version>
 
         <junit-jupiter.version>5.4.2</junit-jupiter.version>
         <assertj_core_version>3.13.2</assertj_core_version>
