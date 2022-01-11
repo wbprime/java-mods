@@ -44,7 +44,7 @@
         <jakarta_jsonp_glassfish_version>1.1.6</jakarta_jsonp_glassfish_version>
         <jakarta_jsonb_yasson_version>1.0.5</jakarta_jsonb_yasson_version>
         <jooq_version>3.12.1</jooq_version>
-        <h2_version>1.4.200</h2_version>
+        <h2_version>2.0.206</h2_version>
         <postgresql_versoin>42.2.8</postgresql_versoin>
 
         <junit-jupiter.version>5.4.2</junit-jupiter.version>
