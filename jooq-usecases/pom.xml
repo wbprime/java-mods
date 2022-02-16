@@ -45,7 +45,7 @@
         <jakarta_jsonb_yasson_version>1.0.5</jakarta_jsonb_yasson_version>
         <jooq_version>3.12.1</jooq_version>
         <h2_version>2.0.206</h2_version>
-        <postgresql_versoin>42.2.8</postgresql_versoin>
+        <postgresql_versoin>42.3.3</postgresql_versoin>
 
         <junit-jupiter.version>5.4.2</junit-jupiter.version>
         <assertj_core_version>3.13.2</assertj_core_version>
