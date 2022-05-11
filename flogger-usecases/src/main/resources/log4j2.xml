@@ -17,11 +17,11 @@
         <!--            </PatternLayout>-->
         <!--        </Console>-->
 
-        <File name="F" fileName="app.log" append="true">
+        <RandomAccessFile name="F" fileName="log4j2.app.log" append="true">
             <PatternLayout>
                 <Pattern>${ALL_PATTERN}</Pattern>
             </PatternLayout>
-        </File>
+        </RandomAccessFile>
     </Appenders>
 
     <Loggers>

@@ -14,10 +14,10 @@
 
     <properties>
         <maven_build_timestamp_format>yyyy-MM-dd HH:mm:ssZ</maven_build_timestamp_format>
-        <compiler_source_version>11</compiler_source_version>
-        <compiler_target_version>11</compiler_target_version>
-        <compiler_testTarget_version>11</compiler_testTarget_version>
-        <compiler_testSource_version>11</compiler_testSource_version>
+        <compiler_source_version>17</compiler_source_version>
+        <compiler_target_version>17</compiler_target_version>
+        <compiler_testTarget_version>17</compiler_testTarget_version>
+        <compiler_testSource_version>17</compiler_testSource_version>
 
         <project_source_encoding>UTF-8</project_source_encoding>
         <project_resource_encoding>UTF-8</project_resource_encoding>
@@ -40,10 +40,10 @@
         <maven_plugin_exec_version>1.6.0</maven_plugin_exec_version>
 
         <google_guava_version>30-jre</google_guava_version>
-        <google_flogger_version>0.7.1</google_flogger_version>
-        <log4j_version>2.14.1</log4j_version>
+        <google_flogger_version>0.7.4</google_flogger_version>
+        <log4j_version>2.17.2</log4j_version>
 
-        <junit-jupiter.version>5.4.2</junit-jupiter.version>
+        <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <assertj_core_version>3.13.2</assertj_core_version>
     </properties>
 
@@ -51,7 +51,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>30.1.1-jre</version>
+            <version>31.1-jre</version>
         </dependency>
 
         <dependency>
@@ -59,18 +59,18 @@
             <artifactId>flogger</artifactId>
             <version>${google_flogger_version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.google.flogger</groupId>-->
-<!--            <artifactId>flogger-system-backend</artifactId>-->
-<!--            <version>${google_flogger_version}</version>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>com.google.flogger</groupId>
-            <artifactId>flogger-log4j2-backend</artifactId>
+            <artifactId>flogger-system-backend</artifactId>
             <version>${google_flogger_version}</version>
             <scope>runtime</scope>
         </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.google.flogger</groupId>-->
+        <!--            <artifactId>flogger-log4j2-backend</artifactId>-->
+        <!--            <version>${google_flogger_version}</version>-->
+        <!--            <scope>runtime</scope>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
@@ -81,6 +81,12 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4j_version}</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.logmanager</groupId>
+            <artifactId>jboss-logmanager</artifactId>
+            <version>2.1.18.Final</version>
         </dependency>
 
         <dependency>
@@ -150,7 +156,7 @@
                         <target>${compiler_target_version}</target>
                         <testSource>${compiler_testSource_version}</testSource>
                         <testTarget>${compiler_testTarget_version}</testTarget>
-                        <release>11</release>
+                        <release>${compiler_source_version}</release>
                         <encoding>${project_source_encoding}</encoding>
                         <optimize>true</optimize>
                         <!-- Slightly faster builds, see https://issues.apache.org/jira/browse/MCOMPILER-209 -->
@@ -220,7 +226,14 @@
                     <artifactId>exec-maven-plugin</artifactId>
                     <version>${maven_plugin_exec_version}</version>
                     <configuration>
-                        <mainClass>im.wangbo.java.usecases.guice.MainApp</mainClass>
+                        <mainClass>im.wangbo.java.usecases.flogger.MainApp</mainClass>
+                        <workingDirectory>${project.build.directory}</workingDirectory>
+                        <systemProperties>
+                            <systemProperty>
+                                <key>java.util.logging.manager</key>
+                                <value>org.jboss.logmanager.LogManager</value>
+                            </systemProperty>
+                        </systemProperties>
                     </configuration>
                 </plugin>
             </plugins>
